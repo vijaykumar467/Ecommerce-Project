@@ -1,0 +1,37 @@
+<br><br>
+
+categoryName: &nbsp; <input type="text" [(ngModel)]='catText'> <br><br>
+
+<button (click)='insert()'>Add</button>
+<br><br>
+
+<!-- {{category| json}} -->
+
+<table class="table">
+    <tr>
+        <th>CategoryName</th>
+        <th>Update Operation</th>
+        <th>delete Operation</th>
+
+    </tr>
+    <tr *ngFor='let cat of category'>
+        <ng-container *ngIf='cat._id!=tempid; else div'>
+            <td>{{cat.CategoryName}}</td>
+            <td><button (click)='catedit(cat)'>Update</button></td>
+        </ng-container>
+        <td><button (click)='delete(cat._id)'>Delete</button></td>
+
+    </tr>
+</table>
+
+<ng-template #div>
+    <td>   <input type="text" [(ngModel)]='editText'>    </td>
+    <td><button (click)='update()'>Save</button>&nbsp;
+    <button (click)='tempid=0'>Cancel</button></td>
+
+</ng-template>
+
+
+
+
+

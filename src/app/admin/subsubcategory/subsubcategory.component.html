@@ -1,0 +1,54 @@
+<br><br>
+
+SubsubcategoryName: &nbsp;&nbsp; 
+<input type="text" [(ngModel)]='subsubtxt'><br><br>
+SubcategoryName : &nbsp;&nbsp; 
+<select [(ngModel)]='subtxt'>
+    <option selected value="undefined">select-subcategory</option>
+    <option *ngFor='let subcat of SubcatData' value="{{subcat._id}}">{{subcat.SubcategoryName}}</option>
+</select>
+<br><br>
+
+<button (click)='insert()'>ADD</button>
+<br><br>
+
+<!-- {{SubcatData|json}} -->
+<!-- {{CatData|json}} -->
+<!-- {{SubsubcatData|json}} -->
+
+<table class="table">
+  <tr>
+      <th>SubsubcategoryName</th>
+      <th>SubcategoryName</th>
+      <th>Update-operation</th>
+      <th>delete-operation</th>
+  </tr>
+  <tr *ngFor='let cat of SubsubcatData'>
+      <ng-container *ngIf='cat._id!=subsubtempid; else div'>
+        <td>{{cat.SubsubcategoryName}}</td>
+        <td>{{cat.subsubdata.SubcategoryName}}</td>
+        <td><button (click)='SubsubEdit(cat)'>UPDATE</button></td>
+      </ng-container>      
+      <td><button (click)='Delete(cat._id)'>DELETE</button></td>
+  </tr>
+</table>
+
+<ng-template #div>   
+     <td>
+        <input type="text" [(ngModel)]='subsubedittxt'>
+    </td>
+    <td>
+        <select [(ngModel)]='subedittxt'>
+            <option *ngFor='let subcat of SubcatData' value="{{subcat._id}}">{{subcat.SubcategoryName}}</option>
+        </select>
+    </td>
+    <td>
+        <button (click)='Update()'>Save</button>&nbsp;
+        <button (click)='subsubtempid=0'>Cancel</button>
+
+    </td>
+</ng-template>
+
+
+
+

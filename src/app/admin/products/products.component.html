@@ -1,0 +1,46 @@
+<br><br>
+
+ProductName: &nbsp; 
+<input type="text" [(ngModel)]='prdtxt'><br><br>
+CategoryName: &nbsp;
+<select [(ngModel)]='catTxt'>
+    <option selected value="undefined">select-category</option>
+    <option *ngFor='let cat of CatData' value="{{cat._id}}">{{cat.CategoryName}}</option>
+</select><br><br>
+SubcategoryName: &nbsp;
+<select [(ngModel)]='subtxt'>
+        <option selected value="undefined">select-subcategory</option>
+    <ng-container *ngFor='let subcat of SubcatData'>
+        <option *ngIf='catTxt == subcat.Cat_Id'  value="{{subcat._id}}">{{subcat.SubcategoryName}}</option>
+    </ng-container>
+</select><br><br>
+SubsubcategoryName: &nbsp;
+<select [(ngModel)]='subsubtxt'>
+         <option selected value="undefined">select-subsubcategory</option>
+    <ng-container *ngFor='let subsubcat of SubsubcatData'>
+         <option *ngIf='subtxt == subsubcat.Subcat_Id'  value="{{subsubcat._id}}">{{subsubcat.SubsubcategoryName}}</option>
+    </ng-container> 
+</select><br><br>
+Upload-Images: &nbsp;
+<input type="file" >
+<br><br>
+
+<button (click)='insert()'>ADD Product</button>
+<br><br><br>
+
+
+<!-- 
+{{CatData|json}}<br><br>
+{{SubcatData|json}}<br><br>
+{{SubsubcatData|json}} -->
+
+
+
+
+
+
+
+
+
+
+
